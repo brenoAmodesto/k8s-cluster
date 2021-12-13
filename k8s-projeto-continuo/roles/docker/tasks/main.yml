@@ -18,3 +18,7 @@
   apt:
     name: "{{ item }}"
   loop: "{{ docker_packages }}"
+
+- name: Configure cgroup driver
+  raw: "{{ docker_cgroup }}"
+ executable: /bin/bash
