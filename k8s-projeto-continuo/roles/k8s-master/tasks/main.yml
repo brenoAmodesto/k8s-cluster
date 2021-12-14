@@ -15,8 +15,8 @@
 
 - name: Get kubejoin
   fetch:
-    dest: ./join
     src: /root/kubejoin.sh
+    dest: ./join
   become: yes
   become_user: root  
 
