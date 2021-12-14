@@ -34,5 +34,5 @@
 
 - name: docker 
   ansible.builtin.service:
-     name: httpd
+     name: docker
      state: restarted
