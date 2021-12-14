@@ -29,10 +29,10 @@
 
 - name: Reload service docker
   ansible.builtin.service:
-    name:  docker
+    name: docker
     state: reloaded
 
-- name: docker 
+- name: Restarting docker
   ansible.builtin.service:
      name: docker
      state: restarted
