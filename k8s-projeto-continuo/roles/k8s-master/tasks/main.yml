@@ -17,7 +17,8 @@
   fetch:
     dest: ./join
     src: /root/kubejoin.sh
-  become: yes  
+  become: yes
+  become_user: root  
 
 - name: Organize files
   shell: |
