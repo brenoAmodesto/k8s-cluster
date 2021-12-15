@@ -27,12 +27,11 @@
 
 - name: Download template and installing pod network template
   shell: | 
-        curl https://docs.projectcalico.org/manifests/calico.yaml -O \
-        kubectl apply -f calico.yaml \
+        curl https://docs.projectcalico.org/manifests/calico.yaml -O
+        kubectl apply -f calico.yaml
         export KUBECONFIG=/etc/kubernetes/admin.conf
-        
-  
-  
 
+
+      
 
   
