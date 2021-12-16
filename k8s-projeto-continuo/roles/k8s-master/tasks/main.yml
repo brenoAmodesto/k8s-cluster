@@ -28,10 +28,10 @@
 - name: Download template calico
   shell: | 
         curl https://docs.projectcalico.org/manifests/calico.yaml -O
+  environment: /etc/kubernetes/admin.conf
 
 - name: Apply template calico
   command: kubectl apply -f calico.yaml
-  environment: KUBECONFIG=/etc/kubernetes/admin.conf
 
 
   
