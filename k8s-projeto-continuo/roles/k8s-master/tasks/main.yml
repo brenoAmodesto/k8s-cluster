@@ -31,6 +31,7 @@
         kubectl apply -f calico.yaml
   environment:
      KUBECONFIG: /etc/kubernetes/admin.conf
+  become: yes
 
 
       
