@@ -33,7 +33,8 @@
   command: kubectl apply -f calico.yaml
 
 - name: Setting environment variable
-  environment: KUBECONFIG=/etc/kubernetes/admin.conf
+  environment: /etc/kubernetes/admin.conf
+  
 
 
       
