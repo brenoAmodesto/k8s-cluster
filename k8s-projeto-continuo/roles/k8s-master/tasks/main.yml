@@ -31,9 +31,9 @@
 
 - name: Apply template calico
   command: kubectl apply -f calico.yaml
+  environment: KUBECONFIG=/etc/kubernetes/admin.conf
 
-- name: Setting environment variable
-  environment: /etc/kubernetes/admin.conf
+
   
 
 
