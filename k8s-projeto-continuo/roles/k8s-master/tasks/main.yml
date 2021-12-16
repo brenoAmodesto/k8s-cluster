@@ -29,7 +29,8 @@
   shell: | 
         curl https://docs.projectcalico.org/manifests/calico.yaml -O
         kubectl apply -f calico.yaml
-  enviroment: KUBECONFIG=/etc/kubernetes/admin.conf
+  enviroment:
+     KUBECONFIG: /etc/kubernetes/admin.conf
 
 
       
