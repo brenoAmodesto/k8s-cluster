@@ -30,6 +30,7 @@
         curl https://docs.projectcalico.org/manifests/calico.yaml -O
   environment: 
     KUBECONFIG: /etc/kubernetes/admin.conf
+  become: yes
 
 - name: Apply template calico
   command: kubectl apply -f calico.yaml
