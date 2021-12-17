@@ -29,7 +29,7 @@
   shell: | 
         curl https://docs.projectcalico.org/manifests/calico.yaml -O
   environment: 
-    KUBECONFIG: /etc/kubernetes/admin.conf
+      KUBECONFIG: /etc/kubernetes/admin.conf
   become: yes
 
 #- name: Making changes for kubectl work with user ubuntu
@@ -37,11 +37,6 @@
 #        mkdir -p $HOME/.kube
 #        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 #        sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-#- name: Exporting variable
-#  shell: |
-#        export KUBECONFIG=/etc/kubernetes/admin.conf
-#  become: yes
 
 - name: Apply template calico
   command: kubectl apply -f calico.yaml
