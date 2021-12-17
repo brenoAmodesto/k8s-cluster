@@ -31,7 +31,7 @@
   environment: 
       KUBECONFIG: /etc/kubernetes/admin.conf
   become: yes
-  become_method: su
+  become_method: sudo
   become_user: root
 
 #- name: Making changes for kubectl work with user ubuntu
@@ -43,7 +43,7 @@
 - name: Apply template calico
   command: kubectl apply -f calico.yaml
   become: yes
-  become_method: su
+  become_method: sudo
   become_user: root
 
   
