@@ -33,7 +33,8 @@
 #  become: yes
 
 - name: Exporting variable
-  command: export KUBECONFIG=/etc/kubernetes/admin.conf
+  shell: |
+    export KUBECONFIG=/etc/kubernetes/admin.conf
   become: yes
 
 - name: Apply template calico
