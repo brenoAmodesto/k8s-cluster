@@ -32,7 +32,7 @@
       KUBECONFIG: /etc/kubernetes/admin.conf
   become: yes
   become_method: su
-  become_user: ubuntu
+  become_user: root
 
 #- name: Making changes for kubectl work with user ubuntu
 #  shell: | 
@@ -44,7 +44,7 @@
   command: kubectl apply -f calico.yaml
   become: yes
   become_method: su
-  become_user: ubuntu
+  become_user: root
 
   
 
