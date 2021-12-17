@@ -31,20 +31,17 @@
   environment: 
       KUBECONFIG: /etc/kubernetes/admin.conf
   become: yes
-  become_method: sudo
-  become_exe: "sudo su - /bin/bash -c"
 
-#- name: Making changes for kubectl work with user ubuntu
-#  shell: | 
-#        mkdir -p $HOME/.kube
-#        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-#        sudo chown $(id -u):$(id -g) $HOME/.kube/config
+- name: Making changes for kubectl work with user ubuntu
+  shell: | 
+        mkdir -p $HOME/.kube
+        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 - name: Apply template calico
   command: kubectl apply -f calico.yaml
   become: yes
-  become_method: sudo
-  become_exe: "sudo su - /bin/bash -c"
+  
 
   
 
