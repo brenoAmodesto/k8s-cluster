@@ -34,9 +34,11 @@
 
 - name: Exporting variable
   command: export KUBECONFIG=/etc/kubernetes/admin.conf
+  become: yes
 
 - name: Apply template calico
   command: kubectl apply -f calico.yaml
+  become: yes
 
   
 
