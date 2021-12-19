@@ -16,31 +16,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Switch directory"
-          command: "cd k8s-projeto-continuo"
-steps: 
-    - run:
-      name: "terraform"
-      command: "terraform init"
-
-exec:
-  docker:
-    - image: brenom2k/brenolatest:latest
-
-  steps:
-      - run:
-        name: "Terraform apply"
-        command: "terraform apply -auto-approve"
-  
-  exec:
-    docker:
-      - image: brenom2k/brenolatest:latest
-    steps:
-      - run:
-        name: "ansible-playbook -u ubuntu -i ec2.py site.yml"
-
-        
-
+          name: "Switch directory and apply terraform resources"
+          command: |
+           cd k8s-projeto-continuo && terraform apply -auto-approve
 
 
 workflows:
