@@ -7,5 +7,5 @@ RUN apt-get update && \
 
 RUN wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip -O /tmp/awscliv2.zip && \
     unzip /tmp/awscliv2.zip && \
-    sudo ./aws/install
+    sudo /tmp/./aws/install
 
