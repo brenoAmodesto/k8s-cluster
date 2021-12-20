@@ -16,12 +16,27 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Switch directory and apply terraform resources"
+          name: "Terraform stage one"
           command: |
-           cd k8s-projeto-continuo && terraform apply -auto-approve
-
+           terraform init
+  exec2:
+     docker:
+     - image: brenom2k/brenolatest:latest
+     steps:
+       - run:
+           name: "Terraform stage two"
+           command: |
+            cd k8s-projeto-continuo && terraform apply -auto-approve
 
 workflows:
-  say:
+  mamada-continua:
     jobs:
       - exec
+      - exec2
+      
+    
+    
+      
+
+    
+    
