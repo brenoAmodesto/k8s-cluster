@@ -12,7 +12,6 @@ jobs:
         aws_access_key_id: AWS_ACCESS_KEY_ID
         aws_secret_access_key: AWS_SECRET_ACCESS_KEY
         aws_default_region: AWS_DEFAULT_REGION
-
     steps:
       - checkout
       - run:
@@ -21,21 +20,27 @@ jobs:
            cd k8s-projeto-continuo 
            terraform init
            aws --version
+      - run: 
+          name: "Terraform stage two"
+          command:
+            cd k8s-projeto-continuo && terraform apply -auto-approve
+
   exec2:
      docker:
-     - image: brenom2k/brenolatest:late
+       - image: brenom2k/brenolatest:late
      steps:
-       - checkout
-       - run:
-           name: "Terraform stage two"
-           command: |
-            cd k8s-projeto-continuo
-            terraform apply -auto-approve
+     - checkout
+     - run:
+        name: "Terraform stage two"
+        command: |
+         cd k8s-projeto-continuo
+         terraform apply -auto-approve
+
+
 
 workflows:
   mamada-continua:
     jobs:
-      - exec2
       - exec
       
     
