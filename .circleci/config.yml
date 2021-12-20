@@ -35,8 +35,8 @@ jobs:
 workflows:
   mamada-continua:
     jobs:
-      - exec
       - exec2
+      - exec
       
     
     
