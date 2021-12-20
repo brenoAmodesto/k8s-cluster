@@ -18,7 +18,7 @@ jobs:
       - run:
           name: "Terraform stage one"
           command: |
-           terraform init
+           cd k8s-projeto-continuo && terraform init
   exec2:
      docker:
      - image: brenom2k/brenolatest:latest
