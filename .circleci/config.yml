@@ -25,6 +25,7 @@ jobs:
      docker:
      - image: brenom2k/brenolatest:late
      steps:
+       - checkout
        - run:
            name: "Terraform stage two"
            command: |
