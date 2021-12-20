@@ -18,21 +18,20 @@ jobs:
       - run:
           name: "Terraform stage one"
           command: |
-           cd k8s-projeto-continuo && terraform init
-  exec2:
-     docker:
-     - image: brenom2k/brenolatest:latest
-     steps:
-       - run:
-           name: "Terraform stage two"
-           command: |
-            cd k8s-projeto-continuo && terraform apply -auto-approve
+           cd k8s-projeto-continuo && ls
+#  exec2:
+#     docker:
+#     - image: brenom2k/brenolatest:latest
+#     steps:
+#       - run:
+#           name: "Terraform stage two"
+#           command: |
+#            cd k8s-projeto-continuo && terraform apply -auto-approve
 
 workflows:
   mamada-continua:
     jobs:
       - exec
-      - exec2
       
     
     
