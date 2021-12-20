@@ -9,24 +9,26 @@ jobs:
     docker:
       - image: brenom2k/brenolatest:latest
     environment:
-        AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
-        AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
-        AWS_DEFAULT_REGION: sa-east-1
+        aws_access_key_id: AWS_ACCESS_KEY_ID
+        aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+        aws_default_region: AWS_DEFAULT_REGION
 
     steps:
       - checkout
       - run:
           name: "Terraform stage one"
           command: |
-           cd k8s-projeto-continuo && ls
-#  exec2:
-#     docker:
-#     - image: brenom2k/brenolatest:latest
-#     steps:
-#       - run:
-#           name: "Terraform stage two"
-#           command: |
-#            cd k8s-projeto-continuo && terraform apply -auto-approve
+           cd k8s-projeto-continuo 
+           terraform init
+  exec2:
+     docker:
+     - image: brenom2k/brenolatest:latest
+     steps:
+       - run:
+           name: "Terraform stage two"
+           command: |
+            cd k8s-projeto-continuo
+            terraform apply -auto-approve
 
 workflows:
   mamada-continua:
