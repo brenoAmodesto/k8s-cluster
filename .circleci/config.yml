@@ -28,7 +28,6 @@ jobs:
       - run:
           name: "Ansible playbook apply"
           command: |
-            mkdir -p  ~/.ssh/id_rsa
             echo PRIVATE_KEY > ~/.ssh/id_rsa
             unset PRIVATE_KEY
             chmod 600 ~/.ssh/id_rsa
