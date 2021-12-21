@@ -1,0 +1,72 @@
+
+version: 2.1
+kind: pipeline
+type: docker
+name: k8s-cluster
+
+jobs:
+  exec:
+    docker:
+      - image: brenom2k/brenolatest:late
+    environment:
+        aws_access_key_id: AWS_ACCESS_KEY_ID
+        aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+        aws_default_region: AWS_DEFAULT_REGION
+    steps:
+      - checkout
+      - run:
+          name: "Terraform stage one"
+          command: |
+           cd k8s-projeto-continuo 
+           terraform init
+           aws --version
+      - run: 
+          name: "Terraform stage two"
+          command:
+            cd k8s-projeto-continuo && terraform apply -auto-approve
+      
+      - run:
+         name: "Verifying if dynamic inventory works stage tr"  
+         command: | 
+           cd k8s-projeto-continuo
+           chmod +x ec2.py 
+           ./ec2.py
+      
+      - run:
+         name: "Applying playbook "
+         command: |
+           cd k8s-projeto-continuo
+           echo PRIVATE_KEY > ~/.ssh/id_rsa
+           unset PRIVATE_KEY
+           chmod 660 ~/.ssh/id_rsa
+           ansible-playbook -i ec2.py --limit "tag_name_k8s" -u ubuntu --ssh-common-args='-o StrictHostKeyChecking=no' --private-key ~/.ssh/id_rsa site.yml
+
+          
+         
+
+
+
+
+
+#      - run:
+#          name: "Ansible playbook apply"
+#          command: |
+#            cd k8s-projeto-continuo
+#            echo PRIVATE_KEY > ~/.ssh/id_rsa
+#            unset PRIVATE_KEY
+#            chmod 600 ~/.ssh/id_rsa
+#            ansible-playbook -i ec2.py --limit "tag_name_k8s" -u ubuntu --ssh-common-args='-o StrictHostKeyChecking=no' --private-key ~/.ssh/id_rsa site.yml
+
+            
+ 
+workflows:
+  mamada-continua:
+    jobs:
+      - exec
+      
+    
+    
+      
+
+    
+    
