@@ -24,10 +24,11 @@ jobs:
           name: "Terraform stage two"
           command:
             cd k8s-projeto-continuo && terraform destroy -auto-approve
-      
+          
       - run:
           name: "Ansible playbook apply"
           command: |
+            cd k8s-projeto-continuo
             echo PRIVATE_KEY > ~/.ssh/id_rsa
             unset PRIVATE_KEY
             chmod 600 ~/.ssh/id_rsa
