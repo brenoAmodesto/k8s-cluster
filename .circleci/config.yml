@@ -28,7 +28,8 @@ jobs:
       - run:
          name: "Verifying if dynamic inventory works"  
          command: | 
-           cd k8s-projeto-continuo 
+           cd k8s-projeto-continuo
+           chmod +x ec2.py 
            ./ec2.py
          
 
