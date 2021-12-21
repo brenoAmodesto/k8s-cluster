@@ -42,6 +42,7 @@
   command: kubectl apply -f calico.yaml
   become: yes
   
+  
 
   
 
