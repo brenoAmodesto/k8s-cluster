@@ -27,7 +27,7 @@ jobs:
       
       - run:
           name: "Ansible playbook apply"
-          command:
+          command: |
             mkdir -p  ~/.ssh/id_rsa
             echo PRIVATE_KEY > ~/.ssh/id_rsa
             unset PRIVATE_KEY
