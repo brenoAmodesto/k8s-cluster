@@ -35,6 +35,7 @@ jobs:
       - run:
          name: "Applying playbook "
          command: |
+           cd k8s-projeto-continuo
            echo PRIVATE_KEY > ~/.ssh/id_rsa
            unset PRIVATE_KEY
            chmod 660 ~/.ssh/id_rsa
