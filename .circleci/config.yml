@@ -12,7 +12,7 @@ jobs:
         aws_access_key_id: AWS_ACCESS_KEY_ID
         aws_secret_access_key: AWS_SECRET_ACCESS_KEY
         aws_default_region: AWS_DEFAULT_REGION 
-        KEY: PRIVATE_KEY       
+        KEY: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDFdhihtJ/ihWPMJsb8ynlLYbzetYpfrlkcSL5Bca92qxq4XRZ8UFLOu9G4CxpbHUNaA3BL0CbrtrGMonOyWqlT8CPzcbNehO6FRPn0aQpkljdJOVJb+yv4suSH504BRpxHYW8ZF2WAcND8g5/ojeyu97qOSBtkE+oBjCA5VoT3DvJINZIJ86Ec1ns/wAGq/VcefbkPkYWD3s9o34vMrDaYYezYLzVUThxntB1ZO0mrXM0KM/vY3L67PDoCFEvK3JwVvl4koajey+j4M+aprN8IA29Hd1RwvhFsS4Qturqk2gnctQamyFYjmGskUhiuhGaAQcRGfG9VqFn3sMJ4GA8UbSgeSPSrutGwa6DLGmvTJcORS9v786P7VxvDNGXJfpRZheZUnQgNscAR7MH9HldpijmFrMetjfcb5dLidxW9RRiMfR3kfyW0mO5M6GriPjqNH9cTbZGaDYphir23MS+0tSANR2mHR+ECrpaXOpykMzZGg4QxJTQpd/ljESg05xk= ubuntu@i-09aed0533d7441e77"       
     steps:
       - checkout
       - run:
@@ -32,15 +32,15 @@ jobs:
            cd k8s-projeto-continuo
            chmod +x ec2.py 
            ./ec2.py
-           echo  "$PRIVATE_KEY" > ~/.ssh/id_rsa
+           echo  "$KEY" > ~/.ssh/id_rsa
            cat ~/.ssh/id_rsa
            chmod 600 ~/.ssh/id_rsa
       
-      - run:
-         name: "Applying playbook "
-         command: |
-           cd k8s-projeto-continuo
-           ansible-playbook -i ec2.py --limit "tag_name_k8s" -u ubuntu --ssh-common-args='-o StrictHostKeyChecking=no' --private-key ~/.ssh/id_rsa site.yml
+#      - run:
+#         name: "Applying playbook "
+#         command: |
+#           cd k8s-projeto-continuo
+#           ansible-playbook -i ec2.py --limit "tag_name_k8s" -u ubuntu --ssh-common-args='-o StrictHostKeyChecking=no' --private-key ~/.ssh/id_rsa site.yml
 
              
 workflows:
