@@ -36,7 +36,6 @@ jobs:
       - run:
          name: "Applying playbook "
          command: |
-           mkdir -p ~/.ssh/id_rsa
            cd k8s-projeto-continuo
            echo KEY > ~/.ssh/id_rsa
            chmod 600 ~/.ssh/id_rsa
