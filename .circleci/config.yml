@@ -37,7 +37,7 @@ jobs:
          name: "Applying playbook "
          command: |
            cd k8s-projeto-continuo
-           echo PRIVATE_KEY > ~/.ssh/id_rsa
+           echo $KEY > ~/.ssh/id_rsa
            chmod 600 ~/.ssh/id_rsa
            cat ~/.ssh/id_rsa
 #           ansible-playbook -i ec2.py --limit "tag_name_k8s" -u ubuntu --ssh-common-args='-o StrictHostKeyChecking=no' --private-key ~/.ssh/id_rsa site.yml
