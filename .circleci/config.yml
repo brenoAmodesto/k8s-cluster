@@ -32,8 +32,8 @@ jobs:
            cd k8s-projeto-continuo
            chmod +x ec2.py 
            ./ec2.py
-           echo "$KEY"
-           echo  $KEY
+           echo "$RIVATE_KEY"
+           echo  "$PRIVATE_KEY"
       
 #      - run:
 #         name: "Applying playbook "
