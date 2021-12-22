@@ -44,10 +44,6 @@ jobs:
           
          
 
-
-
-
-
 #      - run:
 #          name: "Ansible playbook apply"
 #          command: |
