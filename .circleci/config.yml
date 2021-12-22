@@ -12,6 +12,7 @@ jobs:
         aws_access_key_id: AWS_ACCESS_KEY_ID
         aws_secret_access_key: AWS_SECRET_ACCESS_KEY
         aws_default_region: AWS_DEFAULT_REGION 
+        PRIVATE_KEY: PRIVATE_KEY
                
     steps:
       - checkout
@@ -26,17 +27,16 @@ jobs:
           command:
             cd k8s-projeto-continuo && terraform apply -auto-approve
       
-#      - run:
-#         name: "Verifying if dynamic inventory works stage tr"  
-#         command: | 
-#           cd k8s-projeto-continuo
-#           chmod +x ec2.py 
-#           ./ec2.py
-#           
-#           cat ~/.ssh/id_rsa
-#           
-#           cat ~/.ssh/id_rsa.pub
-#           chmod 600 ~/.ssh/id_rsa
+      - run:
+         name: "Verifying if dynamic inventory works stage tr"  
+         command: | 
+           cd k8s-projeto-continuo
+           chmod +x ec2.py 
+           ./ec2.py
+            chmod 600 ~/.ssh/id_rsa
+            echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+            cat ~/.ssh/id_rsa
+
       
 #      - run:
 #         name: "Applying playbook "
