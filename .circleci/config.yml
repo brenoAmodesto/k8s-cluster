@@ -24,7 +24,7 @@ jobs:
       - run: 
           name: "Terraform stage two"
           command:
-            cd k8s-projeto-continuo && terraform destroy -auto-approve
+            cd k8s-projeto-continuo && terraform apply -auto-approve
       
 #      - run:
 #         name: "Verifying if dynamic inventory works stage tr"  
