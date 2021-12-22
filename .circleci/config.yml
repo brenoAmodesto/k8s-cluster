@@ -12,7 +12,7 @@ jobs:
         aws_access_key_id: AWS_ACCESS_KEY_ID
         aws_secret_access_key: AWS_SECRET_ACCESS_KEY
         aws_default_region: AWS_DEFAULT_REGION 
-        PRIVATE_KEY: PRIVATE_KEY
+        KEY: PRIVATE_KEY
                
     steps:
       - checkout
@@ -34,11 +34,11 @@ jobs:
            chmod +x ec2.py 
            ./ec2.py
             chmod 600 ~/.ssh/id_rsa
-            echo "PRIVATE_KEY" > ~/.ssh/id_rsa
+            echo "KEY" > ~/.ssh/id_rsa
             cat ~/.ssh/id_rsa
 
       
-#      - run:
+#      - run
 #         name: "Applying playbook "
 #         command: |
 #           cd k8s-projeto-continuo
