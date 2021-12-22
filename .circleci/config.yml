@@ -25,17 +25,17 @@ jobs:
       - run: 
           name: "Terraform stage two"
           command:
-            cd k8s-projeto-continuo && terraform apply -auto-approve
+            cd k8s-projeto-continuo && terraform destroy -auto-approve
       
-      - run:
-         name: "Verifying if dynamic inventory works stage tr"  
-         command: | 
-           cd k8s-projeto-continuo
-           chmod +x ec2.py 
-           ./ec2.py
-            chmod 600 ~/.ssh/id_rsa
-            echo $PRIVATE_KEY > ~/.ssh/id_rsa
-            cat ~/.ssh/id_rsa
+#      - run:
+#         name: "Verifying if dynamic inventory works stage tr"  
+#         command: | 
+#           cd k8s-projeto-continuo
+#           chmod +x ec2.py 
+#           ./ec2.py
+#            chmod 600 ~/.ssh/id_rsa
+#            echo $PRIVATE_KEY > ~/.ssh/id_rsa
+#            cat ~/.ssh/id_rsa
 
       
 #      - run:
