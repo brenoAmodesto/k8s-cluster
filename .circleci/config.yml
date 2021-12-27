@@ -13,8 +13,13 @@ jobs:
         aws_secret_access_key: AWS_SECRET_ACCESS_KEY
         aws_default_region: AWS_DEFAULT_REGION 
         KEY: PRIVATE_KEY
+    
                
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "28:04:a8:00:6e:c7:52:2a:98:9e:ad:7a:9c:4a:7d:34"
+            
       - checkout
       - run:
           name: "Terraform stage one"
@@ -22,6 +27,8 @@ jobs:
            cd k8s-projeto-continuo 
            terraform init
            aws --version
+      
+
       - run: 
           name: "Terraform stage two"
           command:
@@ -42,7 +49,7 @@ jobs:
          name: "Applying playbook "
          command: |
            cd k8s-projeto-continuo
-           ansible-playbook -vvvv -i ec2.py --limit "tag_name_k8s" -u ubuntu --ssh-common-args='-o StrictHostKeyChecking=no' --private-key ~/.ssh/id_rsa site.yml
+           ansible-playbook -i ec2.py --limit "tag_name_k8s" -u ubuntu --ssh-common-args='-o StrictHostKeyChecking=no' site.yml
 
              
 workflows:
