@@ -33,7 +33,7 @@ jobs:
            cd k8s-projeto-continuo
            chmod +x ec2.py 
            ./ec2.py
-            chmod 777 ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
             echo $PRIVATE_KEY > ~/.ssh/id_rsa
             cat ~/.ssh/id_rsa
 
