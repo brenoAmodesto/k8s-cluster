@@ -7,7 +7,7 @@ The main idea was to use as much tools as I could:
  - Docker
  - Ansible
  - Terraform
- - Drone CI
+ - Drone CI -> changed to Circle CI
  - AWS
  - Kubernetes
 
