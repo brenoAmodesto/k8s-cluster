@@ -1,0 +1,58 @@
+
+version: 2.1
+kind: pipeline
+type: docker
+name: k8s-cluster
+
+jobs:
+  exec:
+    docker:
+      - image: brenom2k/brenolatest:late
+    environment:
+        aws_access_key_id: AWS_ACCESS_KEY_ID
+        aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+        aws_default_region: AWS_DEFAULT_REGION 
+        KEY: PRIVATE_KEY
+    
+               
+    steps:
+#      - add_ssh_keys:
+#          fingerprints:
+#            - "28:04:a8:00:6e:c7:52:2a:98:9e:ad:7a:9c:4a:7d:34"
+            
+      - checkout
+      - run:
+          name: "Terraform stage one"
+          command: |
+           cd k8s-projeto-continuo 
+           terraform init
+           aws --version
+      
+
+      - run: 
+          name: "Terraform stage two"
+          command:
+            cd k8s-projeto-continuo && terraform destroy -auto-approve
+      
+#      - run:
+#         name: "Verifying if dynamic inventory works stage tr"  
+#         command: | 
+#           cd k8s-projeto-continuo
+#           chmod +x ec2.py 
+#           ./ec2.py
+#            chmod 600 ~/.ssh/id_rsa
+#            echo $PRIVATE_KEY > ~/.ssh/id_rsa
+#            cat ~/.ssh/id_rsa
+
+      
+#      - run:
+#         name: "Applying playbook "
+#         command: |
+#           cd k8s-projeto-continuo
+#           ansible-playbook -i ec2.py --limit "tag_name_k8s" -u ubuntu --ssh-common-args='-o StrictHostKeyChecking=no' site.yml
+
+             
+workflows:
+  cluster:
+    jobs:
+      - exec
