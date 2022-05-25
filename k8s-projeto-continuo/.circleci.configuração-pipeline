@@ -52,7 +52,7 @@ jobs:
 
              
 workflows:
-  mamada-continua:
+  cluster:
     jobs:
       - exec
       
